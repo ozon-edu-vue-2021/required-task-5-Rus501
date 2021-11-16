@@ -1,19 +1,47 @@
 <template>
   <div class="product">
-    <img src="@/assets/images/6123150777.webp" alt="" />
-    <p>
-      Pasta and Beans
-      <br />
-      28-day aged 300g USDA Certified Prime Ribeye, rosemary-thyme garlic
-      butter, with choice of two sides.
+    <img :src="getImage(randomNum)" alt="" />
+    <p style="min-height: 35px">
+      <b>{{ name }}</b>
     </p>
-    <button>В корзину</button>
-    <span>99 Р</span>
+    <p>
+      {{ description }}
+    </p>
+    <div class="flexbox">
+      <button>В корзину</button>
+      <span>
+        <b>{{ randomPrice }} &#x20bd;</b>
+      </span>
+    </div>
   </div>
 </template>
 
 <script>
-export default {};
+import getRandomNumber from "../utils/randomizer";
+
+export default {
+  props: {
+    name: {
+      type: String,
+      default: "placeholder",
+    },
+    description: {
+      type: String,
+      default: "placeholder description",
+    },
+  },
+  computed: {
+    getImage() {
+      return (num) => require(`../assets/images/${num}.webp`);
+    },
+    randomNum() {
+      return getRandomNumber(0, 11);
+    },
+    randomPrice() {
+      return getRandomNumber(50, 200);
+    },
+  },
+};
 </script>
 
 <style scoped>
@@ -33,5 +61,26 @@ p {
   overflow: hidden;
   font-size: 12px;
   line-height: 1.4;
+}
+
+.flexbox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+button {
+  font-size: 12px;
+  padding: 7px 15px;
+  border: none;
+  border-radius: 7px;
+  background: hsl(220, 97%, 34%);
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 200ms;
+}
+
+button:hover {
+  background: hsl(220, 97%, 60%);
 }
 </style>

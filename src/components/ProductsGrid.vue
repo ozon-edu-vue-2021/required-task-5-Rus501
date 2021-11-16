@@ -1,20 +1,32 @@
 <template>
   <section>
-    <ProductItem />
+    <ProductItem
+      v-for="item in products"
+      :key="item.uid"
+      :name="item.dish"
+      :description="item.description"
+    />
   </section>
 </template>
 
 <script>
 import ProductItem from "@/components/ProductItem.vue";
-import { SET_DATA } from "@/store/mutation-types";
-import { mapActions } from "vuex";
+
+import { mapGetters, mapActions } from "vuex";
 
 export default {
   components: {
     ProductItem,
   },
+  computed: {
+    ...mapGetters("products", {
+      products: "getterProducts",
+    }),
+  },
   methods: {
-    ...mapActions({ loadProducts: SET_DATA }),
+    ...mapActions("products", {
+      loadProducts: "actionGetProducts",
+    }),
   },
   created() {
     this.loadProducts();
@@ -30,5 +42,6 @@ section {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   justify-items: center;
+  row-gap: 40px;
 }
 </style>

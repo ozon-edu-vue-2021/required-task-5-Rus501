@@ -1,17 +1,17 @@
 <template>
   <div id="app">
-    <Shop />
+    <ProductsGrid />
   </div>
 </template>
 
 <script>
-import Shop from "@/components/Shop.vue";
+import ProductsGrid from "@/components/ProductsGrid.vue";
 import "normalize.css";
 
 export default {
   name: "App",
   components: {
-    Shop,
+    ProductsGrid,
   },
 };
 </script>
@@ -26,8 +26,7 @@ export default {
 }
 
 html,
-body,
-#app {
+body {
   height: 100%;
 }
 
