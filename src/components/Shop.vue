@@ -6,7 +6,6 @@
 
 <script>
 import ProductItem from "@/components/ProductItem.vue";
-import { SET_DATA } from "@/store/mutation-types";
 import { mapActions } from "vuex";
 
 export default {
@@ -14,7 +13,9 @@ export default {
     ProductItem,
   },
   methods: {
-    ...mapActions({ loadProducts: SET_DATA }),
+    ...mapActions('products', {
+      loadProducts: 'getProducts'
+    }),
   },
   created() {
     this.loadProducts();
