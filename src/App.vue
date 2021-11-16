@@ -1,14 +1,17 @@
 <template>
   <div id="app">
+    <Shop />
   </div>
 </template>
 
 <script>
+import Shop from "@/components/Shop.vue";
+import "normalize.css";
 
 export default {
   name: "App",
   components: {
-    Form,
+    Shop,
   },
 };
 </script>
