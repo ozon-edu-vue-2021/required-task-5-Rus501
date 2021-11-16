@@ -1,6 +1,6 @@
 <template>
   <div class="product">
-    <img src="@/assets/images/0.webp" alt="" />
+    <img src="@/assets/images/6123150777.webp" alt="" />
     <p>
       Pasta and Beans
       <br />
