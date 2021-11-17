@@ -20,11 +20,15 @@
       />
     </div>
     <div class="flexbox">
-      <button @click="$emit('clicked')">В корзину</button>
+      <button @click="$emit('add-to-cart')">В корзину</button>
       <span>
         <b>{{ price }} &#x20bd;</b>
       </span>
     </div>
+    <div @click="$emit('add-to-fav')" v-if="!favourite" class="favourite-btn">
+      🤍
+    </div>
+    <div @click="$emit('remove-from-fav')" v-else class="favourite-btn">💗</div>
   </div>
 </template>
 
@@ -47,6 +51,10 @@ export default {
       type: Number,
       default: 0,
     },
+    favourite: {
+      type: Boolean,
+      default: false,
+    },
   },
   computed: {
     getImage() {
@@ -58,6 +66,7 @@ export default {
 
 <style scoped>
 .product {
+  position: relative;
   max-width: 150px;
 }
 
@@ -111,5 +120,12 @@ button:hover {
 
 button:active {
   background: hsl(220, 97%, 70%);
+}
+
+.favourite-btn {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  cursor: pointer;
 }
 </style>

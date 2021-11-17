@@ -11,6 +11,10 @@ export default {
    * @param { } product
    */
   [ADD_TO_CART](state, product) {
+    if (state.cart.find((item) => item.uid === product.uid)) {
+      product.quantity += 1;
+      return;
+    }
     state.cart.push(product);
   },
 

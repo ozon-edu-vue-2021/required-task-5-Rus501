@@ -1,7 +1,7 @@
 <template>
   <section>
     <ProductItem
-      v-for="product in products"
+      v-for="product in favProducts"
       :key="product.uid"
       :name="product.dish"
       :description="product.description"
@@ -27,12 +27,11 @@ export default {
   },
   computed: {
     ...mapGetters("products", {
-      products: "getterProducts",
+      favProducts: "getterFavProducts",
     }),
   },
   methods: {
     ...mapActions("products", {
-      loadProducts: "getProducts",
       updateQuantity: "updateQuantity",
       addToFav: "addToFav",
       removeFromFav: "removeFromFav",
@@ -40,9 +39,6 @@ export default {
     ...mapMutations("cart", {
       addProductToCart: "addToCart",
     }),
-  },
-  created() {
-    this.loadProducts();
   },
 };
 </script>

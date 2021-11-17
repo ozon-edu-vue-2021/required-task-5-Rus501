@@ -28,6 +28,10 @@ export default {
           link: routerLinks.cart,
           name: "Cart",
         },
+        {
+          link: routerLinks.favourites,
+          name: "Favourites",
+        },
       ];
     },
   },

@@ -1,5 +1,9 @@
-import { SET_PRODUCTS } from "./mutation-types";
-import { UPDATE_QUANTITY } from "./mutation-types";
+import {
+  SET_PRODUCTS,
+  UPDATE_QUANTITY,
+  ADD_TO_FAV,
+  REMOVE_FROM_FAV,
+} from "./mutation-types";
 
 import getRandomNumber from "@/utils/randomizer";
 
@@ -19,6 +23,7 @@ export async function getProducts({ commit }) {
       product.price = getRandomNumber(50, 200);
       product.imageId = getRandomNumber(0, 11);
       product.quantity = 1;
+      product.favourite = false;
     });
 
     commit(SET_PRODUCTS, data);
@@ -29,4 +34,12 @@ export async function getProducts({ commit }) {
 
 export function updateQuantity({ commit }, payload) {
   commit(UPDATE_QUANTITY, payload);
+}
+
+export function addToFav({ commit }, product) {
+  commit(ADD_TO_FAV, product);
+}
+
+export function removeFromFav({ commit }, product) {
+  commit(REMOVE_FROM_FAV, product);
 }

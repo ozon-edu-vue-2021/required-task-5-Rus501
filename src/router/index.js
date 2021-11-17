@@ -3,7 +3,6 @@ import Vue from "vue";
 import Router from "vue-router";
 
 import ProductsPage from "@/pages/ProductsPage.vue";
-// import Cart from "@/pages/Cart.vue";
 
 Vue.use(Router);
 
@@ -17,6 +16,11 @@ const routes = [
     path: routerLinks.cart,
     name: "Cart",
     component: () => import("@/pages/Cart.vue"),
+  },
+  {
+    path: routerLinks.favourites,
+    name: "Favourites",
+    component: () => import("@/pages/Favourites.vue"),
   },
 ];
 

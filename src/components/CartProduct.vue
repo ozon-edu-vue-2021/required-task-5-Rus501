@@ -9,7 +9,7 @@
         {{ description }}
       </p>
       <div class="cart-product__description-btn">
-        <button>В избранное</button>
+        <button @click="$emit('add-to-fav')">В избранное</button>
         <button @click="$emit('remove')">Удалить</button>
       </div>
     </div>

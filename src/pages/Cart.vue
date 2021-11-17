@@ -11,6 +11,7 @@
           :image-id="product.imageId"
           :price="product.price"
           :quantity="product.quantity"
+          @add-to-fav="addToFav(product)"
           @remove="removeFromCart(product)"
           @quantity-change="updateQuantity({ product, quantity: $event })"
         />
@@ -48,6 +49,9 @@ export default {
     ...mapActions("cart", {
       removeFromCart: "removeFromCart",
       updateQuantity: "updateQuantity",
+    }),
+    ...mapActions("products", {
+      addToFav: "addToFav",
     }),
   },
 };
