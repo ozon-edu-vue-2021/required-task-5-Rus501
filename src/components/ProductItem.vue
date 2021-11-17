@@ -1,6 +1,6 @@
 <template>
   <div class="product">
-    <img :src="getImage(randomNum)" alt="" />
+    <img :src="getImage(imageId)" alt="" />
     <p style="min-height: 35px">
       <b>{{ name }}</b>
     </p>
@@ -8,17 +8,15 @@
       {{ description }}
     </p>
     <div class="flexbox">
-      <button>В корзину</button>
+      <button @click="$emit('clicked')">В корзину</button>
       <span>
-        <b>{{ randomPrice }} &#x20bd;</b>
+        <b>{{ price }} &#x20bd;</b>
       </span>
     </div>
   </div>
 </template>
 
 <script>
-import getRandomNumber from "../utils/randomizer";
-
 export default {
   props: {
     name: {
@@ -29,16 +27,18 @@ export default {
       type: String,
       default: "placeholder description",
     },
+    imageId: {
+      type: Number,
+      default: 0,
+    },
+    price: {
+      type: Number,
+      default: 0,
+    },
   },
   computed: {
     getImage() {
-      return (num) => require(`../assets/images/${num}.webp`);
-    },
-    randomNum() {
-      return getRandomNumber(0, 11);
-    },
-    randomPrice() {
-      return getRandomNumber(50, 200);
+      return (randomNum) => require(`../assets/images/${randomNum}.webp`);
     },
   },
 };
@@ -82,5 +82,9 @@ button {
 
 button:hover {
   background: hsl(220, 97%, 60%);
+}
+
+button:active {
+  background: hsl(220, 97%, 70%);
 }
 </style>
