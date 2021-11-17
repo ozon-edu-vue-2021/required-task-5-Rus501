@@ -8,6 +8,7 @@
       :image-id="product.imageId"
       :price="product.price"
       @clicked="addProductToCart(product)"
+      @quantity-change="updateQuantity({ product, quantity: $event })"
     />
   </section>
 </template>
@@ -29,6 +30,7 @@ export default {
   methods: {
     ...mapActions("products", {
       loadProducts: "getProducts",
+      updateQuantity: "updateQuantity",
     }),
     ...mapMutations("cart", {
       addProductToCart: "addToCart",

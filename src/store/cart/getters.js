@@ -9,5 +9,5 @@ export function getterCart(state) {
 }
 
 export function getterPrice(state) {
-  return state.cart.reduce((acc, curr) => acc + curr.price, 0);
+  return state.cart.reduce((acc, curr) => acc + curr.price * curr.quantity, 0);
 }

@@ -1,4 +1,6 @@
 import { SET_PRODUCTS } from "./mutation-types";
+import { UPDATE_QUANTITY } from "./mutation-types";
+
 import getRandomNumber from "@/utils/randomizer";
 
 /**
@@ -16,10 +18,15 @@ export async function getProducts({ commit }) {
     data.forEach((product) => {
       product.price = getRandomNumber(50, 200);
       product.imageId = getRandomNumber(0, 11);
+      product.quantity = 1;
     });
 
     commit(SET_PRODUCTS, data);
   } catch (error) {
     console.error(error);
   }
+}
+
+export function updateQuantity({ commit }, payload) {
+  commit(UPDATE_QUANTITY, payload);
 }

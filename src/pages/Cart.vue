@@ -10,7 +10,9 @@
           :description="product.description"
           :image-id="product.imageId"
           :price="product.price"
+          :quantity="product.quantity"
           @remove="removeFromCart(product)"
+          @quantity-change="updateQuantity({ product, quantity: $event })"
         />
       </div>
       <div class="cart-order">
@@ -45,6 +47,7 @@ export default {
     },
     ...mapActions("cart", {
       removeFromCart: "removeFromCart",
+      updateQuantity: "updateQuantity",
     }),
   },
 };

@@ -1,4 +1,4 @@
-import { REMOVE_FROM_CART } from "./mutation-types";
+import { REMOVE_FROM_CART, UPDATE_QUANTITY } from "./mutation-types";
 
 /**
  *
@@ -7,4 +7,8 @@ import { REMOVE_FROM_CART } from "./mutation-types";
  */
 export function removeFromCart({ commit }, productToRemove) {
   commit(REMOVE_FROM_CART, productToRemove);
+}
+
+export function updateQuantity({ commit }, payload) {
+  commit(UPDATE_QUANTITY, payload);
 }

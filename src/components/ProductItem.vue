@@ -8,6 +8,18 @@
       {{ description }}
     </p>
     <div class="flexbox">
+      <label for="quantity">Quantity:</label>
+      <input
+        type="number"
+        name="quantity"
+        id="quantity"
+        value="1"
+        min="1"
+        max="999"
+        @input="$emit('quantity-change', $event.target.value)"
+      />
+    </div>
+    <div class="flexbox">
       <button @click="$emit('clicked')">В корзину</button>
       <span>
         <b>{{ price }} &#x20bd;</b>
@@ -67,6 +79,19 @@ p {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: 10px;
+}
+
+.flexbox label,
+.flexbox input {
+  font-size: 12px;
+}
+
+.flexbox input {
+  max-width: 50px;
+  padding: 5px;
+  border: 1px solid #000;
+  outline: none;
 }
 
 button {

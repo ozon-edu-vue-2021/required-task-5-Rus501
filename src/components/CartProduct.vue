@@ -15,6 +15,19 @@
     </div>
     <span>
       <b>{{ price }} &#x20bd;</b>
+      <div class="flexbox">
+        <label for="quantity">Quantity:</label>
+        <input
+          type="number"
+          name="quantity"
+          id="quantity"
+          :value="quantity"
+          min="1"
+          max="999"
+          @input="$emit('quantity-change', $event.target.value)"
+        />
+        x
+      </div>
     </span>
   </div>
 </template>
@@ -37,6 +50,10 @@ export default {
     price: {
       type: Number,
       default: 0,
+    },
+    quantity: {
+      type: Number,
+      default: 1,
     },
   },
   computed: {
@@ -64,8 +81,22 @@ p {
 }
 
 span {
+  position: relative;
   min-width: 50px;
   text-align: right;
+}
+
+.flexbox {
+  position: absolute;
+  top: -2px;
+  left: -110px;
+  font-size: 14px;
+}
+
+.flexbox input {
+  max-width: 50px;
+  padding: 0;
+  outline: none;
 }
 
 .cart-product__description-btn {
